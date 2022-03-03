@@ -1,0 +1,80 @@
+name: Package Builder
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 16 * * *"
+  push:
+    branches:
+      - master
+    paths:
+      - .github/workflows/build_package.yml
+
+jobs:
+  buildpkg:
+    name: Build Package
+    runs-on: ubuntu-20.04
+    container: openwrtorg/sdk:x86-64-21.02.2
+    steps:
+      - name: Change dir permission
+        run: sudo chown -R `whoami`:`whoami` $GITHUB_WORKSPACE
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Env for Openwrt SDK
+        env:
+          HOME: /home/build
+        run: |
+          cd $HOME/openwrt
+          sudo apt update
+          sudo apt install -y libev-dev libc-ares-dev libudns-dev libncurses-dev upx
+          cp $GITHUB_WORKSPACE/key-build .
+          cp /usr/bin/upx staging_dir/host/bin
+          cp /usr/bin/upx-ucl staging_dir/host/bin
+
+      - name: Get Packages
+        env:
+          HOME: /home/build
+        run: |
+          cd $HOME/openwrt
+          git clone --depth 1 --shallow-submodules https://github.com/vernesong/OpenClash package/openclash
+          cd package/openclash/luci-app-openclash/tools/po2lmo ; make && sudo make install ; cd $HOME/openwrt
+          echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall" >> feeds.conf.default
+          sudo apt install -y git curl build-essential libncurses5-dev zlib1g-dev gawk flex quilt libssl-dev xsltproc libxml-parser-perl mercurial bzr ecj cvs unzip
+          git clone --depth 1 --shallow-submodules https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git package/mentohust
+
+      - name: Build Packages
+        env:
+          HOME: /home/build
+        run: |
+          cd $HOME/openwrt
+          ./scripts/feeds update -a
+          ./scripts/feeds install golang c-ares libev libopenssl libsodium mbedtls pcre libncursesw6 luci-app-passwall libpcap
+          make defconfig
+          make -j3
+
+      - name: Upload base packages
+        env:
+          HOME: /home/build
+        run: |
+          TAG=packages/x86/64
+          cd $HOME/openwrt/bin/packages/*/base
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "$TAG$(TZ='Asia/Shanghai' date +@%Y%m%d)"
+          git push --force --quiet "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" HEAD:$TAG
+
+      - name: Upload passwall packages
+        env:
+          HOME: /home/build
+        run: |
+          TAG=passwall/x86/64
+          cd $HOME/openwrt/bin/packages/*/passwall
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "$TAG$(TZ='Asia/Shanghai' date +@%Y%m%d)"
+          git push --force --quiet "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" HEAD:$TAG
