@@ -24,7 +24,6 @@ Add the following lines to `/etc/opkg/customfeeds.conf`.
 
 ```
 src/gz zydou http://cdn.jsdelivr.net/gh/zydou/openwrt-dist@packages/x86/64
-src/gz passwall http://cdn.jsdelivr.net/gh/zydou/openwrt-dist@passwall/x86/64
 ```
 
 Then install whatever you want.
@@ -33,7 +32,6 @@ Then install whatever you want.
 opkg update
 opkg install mentohust
 opkg install luci-app-openclash
-opkg install luci-app-passwall
 opkg install ChinaDNS
 opkg install luci-app-chinadns
 opkg install dns-forwarder
@@ -59,7 +57,6 @@ There are some precompiled firmwares under [`image/generic.x86_64`](https://gith
 Here are the built-in packages:
 - mentohust
 - openclash
-- passwall
 
 You can check the [official documentation](https://openwrt.org/docs/guide-user/installation/openwrt_x86) to choose the firmware format you need.
 

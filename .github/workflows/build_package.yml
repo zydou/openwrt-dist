@@ -39,7 +39,6 @@ jobs:
           cd $HOME/openwrt
           git clone --depth 1 --shallow-submodules https://github.com/vernesong/OpenClash package/openclash
           cd package/openclash/luci-app-openclash/tools/po2lmo ; make && sudo make install ; cd $HOME/openwrt
-          echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall" >> feeds.conf.default
           sudo apt install -y git curl build-essential libncurses5-dev zlib1g-dev gawk flex quilt libssl-dev xsltproc libxml-parser-perl mercurial bzr ecj cvs unzip
           git clone --depth 1 --shallow-submodules https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk.git package/mentohust
 
@@ -49,29 +48,16 @@ jobs:
         run: |
           cd $HOME/openwrt
           ./scripts/feeds update -a
-          ./scripts/feeds install golang c-ares libev libopenssl libsodium mbedtls pcre libncursesw6 luci-app-passwall libpcap
+          ./scripts/feeds install golang c-ares libev libopenssl libsodium mbedtls pcre libncursesw6 libpcap
           make defconfig
           make -j3
 
-      - name: Upload base packages
+      - name: Upload packages
         env:
           HOME: /home/build
         run: |
           TAG=packages/x86/64
           cd $HOME/openwrt/bin/packages/*/base
-          git init
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "$TAG$(TZ='Asia/Shanghai' date +@%Y%m%d)"
-          git push --force --quiet "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" HEAD:$TAG
-
-      - name: Upload passwall packages
-        env:
-          HOME: /home/build
-        run: |
-          TAG=passwall/x86/64
-          cd $HOME/openwrt/bin/packages/*/passwall
           git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

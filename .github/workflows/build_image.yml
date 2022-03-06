@@ -24,12 +24,6 @@ jobs:
           ref: packages/x86/64
           path: packages
 
-      - name: Checkout passwall
-        uses: actions/checkout@v2
-        with:
-          ref: passwall/x86/64
-          path: passwall
-
       - name: Env for Openwrt Builder
         env:
           HOME: /home/build
@@ -38,20 +32,19 @@ jobs:
           cd $HOME/openwrt
           sed -i "/check_signature/d" repositories.conf
           echo "src custom file://$GITHUB_WORKSPACE/packages" >> repositories.conf
-          echo "src passwall file://$GITHUB_WORKSPACE/passwall" >> repositories.conf
 
       - name: Build Image
         env:
           HOME: /home/build
           PROFILE: generic.x86_64
-          PACKAGES: -dnsmasq bash bind-dig ca-bundle ca-certificates coreutils coreutils-nohup curl dnsmasq-full htop ip-full ip6tables-mod-nat ipset iptables iptables-mod-extra iptables-mod-tproxy kmod-tun libcap libcap-bin luci luci-app-passwall luci-base luci-compat luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn luci-i18n-opkg-zh-cn luci-app-openclash mentohust ruby ruby-yaml
+          PACKAGES: -dnsmasq bash bind-dig ca-bundle ca-certificates coreutils coreutils-nohup curl dnsmasq-full htop ip-full ip6tables-mod-nat ipset iptables iptables-mod-extra iptables-mod-tproxy kmod-tun libcap libcap-bin luci luci-base luci-compat luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn luci-i18n-opkg-zh-cn luci-app-openclash mentohust ruby ruby-yaml
         shell: bash
         run: |
           cd $HOME/openwrt
           makeopts=("PROFILE=${PROFILE%.*}" "PACKAGES=$PACKAGES")
           [[ -d files ]] && makeopts+=("FILES=files/")
           make info
-          sed -i 's/^\s*\(CONFIG_TARGET_ROOTFS_PARTSIZE\)\s*=\s*[^#\n \t]*/\1=256/' .config
+          #sed -i 's/^\s*\(CONFIG_TARGET_ROOTFS_PARTSIZE\)\s*=\s*[^#\n \t]*/\1=256/' .config
           TERM=xterm-256color make image "${makeopts[@]}"
       - name: Upload Image
         env:
