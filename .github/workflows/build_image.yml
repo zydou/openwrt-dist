@@ -15,14 +15,8 @@ jobs:
     runs-on: ubuntu-20.04
     container: openwrtorg/imagebuilder:x86-64-21.02.2
     steps:
-      - name: Change dir permission
-        run: sudo chown -R `whoami`:`whoami` $GITHUB_WORKSPACE
-
       - name: Checkout packages
-        uses: actions/checkout@v3
-        with:
-          ref: packages/x86/64
-          path: packages
+        run : git clone -b packages/x86/64 --single-branch "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" /tmp/packages
 
       - name: Env for Openwrt Builder
         env:
@@ -31,7 +25,7 @@ jobs:
           export
           cd $HOME/openwrt
           sed -i "/check_signature/d" repositories.conf
-          echo "src custom file://$GITHUB_WORKSPACE/packages" >> repositories.conf
+          echo "src custom file:///tmp/packages" >> repositories.conf
 
       - name: Build Image
         env:

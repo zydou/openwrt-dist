@@ -15,11 +15,8 @@ jobs:
     runs-on: ubuntu-20.04
     container: openwrtorg/sdk:x86-64-21.02.2
     steps:
-      - name: Change dir permission
-        run: sudo chown -R `whoami`:`whoami` $GITHUB_WORKSPACE
-
       - name: Checkout repo
-        uses: actions/checkout@v3
+        run: git clone --depth 1 --shallow-submodules "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" /tmp/openwrt
 
       - name: Env for Openwrt SDK
         env:
@@ -28,7 +25,7 @@ jobs:
           cd $HOME/openwrt
           sudo apt update
           sudo apt install -y libev-dev libc-ares-dev libudns-dev libncurses-dev upx
-          cp $GITHUB_WORKSPACE/key-build .
+          cp /tmp/openwrt/key-build .
           cp /usr/bin/upx staging_dir/host/bin
           cp /usr/bin/upx-ucl staging_dir/host/bin
 
