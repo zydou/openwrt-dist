@@ -16,7 +16,7 @@ jobs:
     container: openwrtorg/imagebuilder:x86-64-21.02.2
     steps:
       - name: Checkout packages
-        run : git clone -b packages/x86/64 --single-branch "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" /tmp/packages
+        run: git clone -b packages/x86/64 --single-branch "https://${{ github.actor }}:${{ github.token }}@github.com/${{ github.repository }}" /tmp/packages
 
       - name: Env for Openwrt Builder
         env:
