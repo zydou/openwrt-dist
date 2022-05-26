@@ -49,6 +49,9 @@ jobs:
           git init
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config http.postBuffer 524288000
+          git config https.postBuffer 524288000
+          git config core.compression -1
           git add .
           git commit -m "$PROFILE$(TZ='Asia/Shanghai' date +@%Y%m%d)"
           git push --force --quiet "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" HEAD:image/$PROFILE
