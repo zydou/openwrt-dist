@@ -1,0 +1,367 @@
+Package: libmbedtls12
+Version: 2.16.12-1
+Depends: libc
+Provides: libmbedtls
+Source: feeds/base/package/libs/mbedtls
+SourceName: libmbedtls
+License: GPL-2.0-or-later
+LicenseFiles: gpl-2.0.txt
+Section: libs
+SourceDateEpoch: 1645120830
+ABIVersion: 12
+CPE-ID: cpe:/a:arm:mbed_tls
+Architecture: x86_64
+Installed-Size: 188047
+Filename: libmbedtls12_2.16.12-1_x86_64.ipk
+Size: 188631
+SHA256sum: e90073970d6e4d51cbe0471af70a9b73781e5aa7e6a14baf929832f679129da8
+Description:  The aim of the mbedtls project is to provide a quality, open-source
+ cryptographic library written in C and targeted at embedded systems.
+ This package contains the mbedtls library.
+
+Package: libopenssl-afalg
+Version: 1.1.1m-1
+Depends: libc, libopenssl1.1, kmod-crypto-user, libopenssl-conf
+Source: feeds/base/package/libs/openssl
+SourceName: libopenssl-afalg
+License: OpenSSL
+LicenseFiles: LICENSE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:openssl:openssl
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Architecture: x86_64
+Installed-Size: 5987
+Filename: libopenssl-afalg_1.1.1m-1_x86_64.ipk
+Size: 6930
+SHA256sum: d1be461a330252b17be01e8d92d6e95c4b837e86009d96ec566e7a316d918e8e
+Description:  This package adds an engine that enables hardware acceleration
+ through the AF_ALG kernel interface.
+ To use it, you need to configure the engine in /etc/ssl/openssl.cnf
+ See https://www.openssl.org/docs/man1.1.1/man5/config.html#Engine-Configuration-Module
+ and https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators
+ The engine_id is "afalg"
+
+Package: libopenssl-conf
+Version: 1.1.1m-1
+Depends: libc, libopenssl1.1
+Source: feeds/base/package/libs/openssl
+SourceName: libopenssl-conf
+License: OpenSSL
+LicenseFiles: LICENSE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:openssl:openssl
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Architecture: x86_64
+Installed-Size: 4777
+Filename: libopenssl-conf_1.1.1m-1_x86_64.ipk
+Size: 5774
+SHA256sum: ea8ad72dc50dd29f88902f1dbd863f5fd6d8991064f420c339c8f7396e4182e9
+Description:  The OpenSSL Project is a collaborative effort to develop a robust,
+ commercial-grade, full-featured, and Open Source toolkit implementing the
+ Transport Layer Security (TLS) protocol as well as a full-strength
+ general-purpose cryptography library.
+ This package installs the OpenSSL configuration file /etc/ssl/openssl.cnf.
+
+Package: libopenssl-devcrypto
+Version: 1.1.1m-1
+Depends: libc, libopenssl1.1, kmod-cryptodev, libopenssl-conf
+Source: feeds/base/package/libs/openssl
+SourceName: libopenssl-devcrypto
+License: OpenSSL
+LicenseFiles: LICENSE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:openssl:openssl
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Architecture: x86_64
+Installed-Size: 10773
+Filename: libopenssl-devcrypto_1.1.1m-1_x86_64.ipk
+Size: 11743
+SHA256sum: 50fca462eecd169cc6365c3517c1581cfaf8092297a4cc9d329ae0aeecd994dc
+Description:  This package adds an engine that enables hardware acceleration
+ through the /dev/crypto kernel interface.
+ To use it, you need to configure the engine in /etc/ssl/openssl.cnf
+ See https://www.openssl.org/docs/man1.1.1/man5/config.html#Engine-Configuration-Module
+ and https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators
+ The engine_id is "devcrypto"
+
+Package: libopenssl-padlock
+Version: 1.1.1m-1
+Depends: libc, libopenssl1.1, kmod-crypto-hw-padlock, libopenssl-conf
+Source: feeds/base/package/libs/openssl
+SourceName: libopenssl-padlock
+License: OpenSSL
+LicenseFiles: LICENSE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:openssl:openssl
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Architecture: x86_64
+Installed-Size: 8525
+Filename: libopenssl-padlock_1.1.1m-1_x86_64.ipk
+Size: 9471
+SHA256sum: 18c9d9ba39ddd68ab7a61945007cde8a1da1c0ad1acd929ff9055cd271319c07
+Description:  This package adds an engine that enables VIA Padlock hardware acceleration.
+ To use it, you need to configure it in /etc/ssl/openssl.cnf.
+ See https://www.openssl.org/docs/man1.1.1/man5/config.html#Engine-Configuration-Module
+ and https://openwrt.org/docs/techref/hardware/cryptographic.hardware.accelerators
+ The engine_id is "padlock"
+
+Package: libopenssl1.1
+Version: 1.1.1m-1
+Depends: libc
+Provides: libopenssl
+Source: feeds/base/package/libs/openssl
+SourceName: libopenssl
+License: OpenSSL
+LicenseFiles: LICENSE
+Section: libs
+SourceDateEpoch: 1645120830
+ABIVersion: 1.1
+CPE-ID: cpe:/a:openssl:openssl
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Architecture: x86_64
+Installed-Size: 1524468
+Filename: libopenssl1.1_1.1.1m-1_x86_64.ipk
+Size: 1517780
+SHA256sum: 36823b44e0d0ed9af0080b421602abbccca8eb459409910668b8377365baf119
+Description:  The OpenSSL Project is a collaborative effort to develop a robust,
+ commercial-grade, full-featured, and Open Source toolkit implementing the
+ Transport Layer Security (TLS) protocol as well as a full-strength
+ general-purpose cryptography library.
+ This package contains the OpenSSL shared libraries, needed by other programs.
+
+Package: libpcap1
+Version: 1.9.1-3.1
+Depends: libc
+Provides: libpcap
+Source: feeds/base/package/libs/libpcap
+SourceName: libpcap
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Section: libs
+SourceDateEpoch: 1645120830
+ABIVersion: 1
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: x86_64
+Installed-Size: 113845
+Filename: libpcap1_1.9.1-3.1_x86_64.ipk
+Size: 114659
+SHA256sum: f2743b016d5f121d0fe2dddbda8d79cea427e01be2d164909c35c509d4c74e99
+Description:  This package contains a system-independent library for user-level network packet
+ capture.
+
+Package: libpcre16
+Version: 8.44-3
+Depends: libc
+Source: feeds/base/package/libs/pcre
+SourceName: libpcre16
+License: BSD-3-Clause
+LicenseFiles: LICENCE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:pcre:pcre
+Maintainer: Thomas Heil <heil@terminal-consulting.de>
+Architecture: x86_64
+Installed-Size: 130062
+Filename: libpcre16_8.44-3_x86_64.ipk
+Size: 130944
+SHA256sum: 1dbd2d3aed9af506ddd05de9c90ad69358225b6cd277ee843940e343c584819d
+Description:  A Perl Compatible Regular Expression library (16bit support)
+
+Package: libpcre32
+Version: 8.44-3
+Depends: libc
+Source: feeds/base/package/libs/pcre
+SourceName: libpcre32
+License: BSD-3-Clause
+LicenseFiles: LICENCE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:pcre:pcre
+Maintainer: Thomas Heil <heil@terminal-consulting.de>
+Architecture: x86_64
+Installed-Size: 122344
+Filename: libpcre32_8.44-3_x86_64.ipk
+Size: 123232
+SHA256sum: 6482f811dca1abac5101f131daa9559e26d50752934a18444e9b41df17acac5b
+Description:  A Perl Compatible Regular Expression library (32bit support)
+
+Package: libpcre
+Version: 8.44-3
+Depends: libc
+Source: feeds/base/package/libs/pcre
+SourceName: libpcre
+License: BSD-3-Clause
+LicenseFiles: LICENCE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:pcre:pcre
+Maintainer: Thomas Heil <heil@terminal-consulting.de>
+Architecture: x86_64
+Installed-Size: 142427
+Filename: libpcre_8.44-3_x86_64.ipk
+Size: 143314
+SHA256sum: 9942d8947c6d57980242717f3acfbeb59aa183a6ba0ec9198341429ab8ba8ab6
+Description:  A Perl Compatible Regular Expression library
+
+Package: libpcrecpp
+Version: 8.44-3
+Depends: libc, libpcre, uclibcxx
+Source: feeds/base/package/libs/pcre
+SourceName: libpcrecpp
+License: BSD-3-Clause
+LicenseFiles: LICENCE
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:pcre:pcre
+Maintainer: Thomas Heil <heil@terminal-consulting.de>
+Architecture: x86_64
+Installed-Size: 11954
+Filename: libpcrecpp_8.44-3_x86_64.ipk
+Size: 12769
+SHA256sum: 5975c74a842fd93916162c11a34cba50919ad8b6430aae3f5e2cd5e42cb12cd6
+Description:  C++ wrapper for Perl Compatible Regular Expression library
+
+Package: luci-app-openclash
+Version: 0.45.59-beta
+Depends: libc, dnsmasq-full, coreutils, coreutils-nohup, bash, curl, ca-certificates, ipset, ip-full, libcap, libcap-bin, ruby, ruby-yaml, kmod-tun, unzip
+Source: package/openclash/luci-app-openclash
+SourceName: luci-app-openclash
+Section: opt
+SourceDateEpoch: 1662812394
+Maintainer: vernesong
+Architecture: all
+Installed-Size: 3919411
+Filename: luci-app-openclash_0.45.59-beta_all.ipk
+Size: 3903251
+SHA256sum: 05fb109cdd8b5615630e8a16c23f2eec5d2fe27c69501eed61cb659fa8b55119
+Description:  A LuCI support for clash
+
+Package: mbedtls-util
+Version: 2.16.12-1
+Depends: libc, libmbedtls12
+Source: feeds/base/package/libs/mbedtls
+SourceName: mbedtls-util
+License: GPL-2.0-or-later
+LicenseFiles: gpl-2.0.txt
+Section: utils
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:arm:mbed_tls
+Architecture: x86_64
+Installed-Size: 7009
+Filename: mbedtls-util_2.16.12-1_x86_64.ipk
+Size: 7888
+SHA256sum: 1899377332b4369754dbed88b946163e05c0bc7b2616b7d0ef99ca372210b02a
+Description:  The aim of the mbedtls project is to provide a quality, open-source
+ cryptographic library written in C and targeted at embedded systems.
+ This package contains mbedtls helper programs for private key and
+ CSR generation (gen_key, cert_req)
+
+Package: mentohust
+Version: 0.3.1-1
+Depends: libc, libpcap1
+Source: package/mentohust
+SourceName: mentohust
+Section: net
+SourceDateEpoch: 1652166139
+Architecture: x86_64
+Installed-Size: 80242
+Filename: mentohust_0.3.1-1_x86_64.ipk
+Size: 81067
+SHA256sum: 9821f1d83982c3b7f6365e6cf52183b8b258f442a8d7ba2477f57300bacd132f
+Description:  A Ruijie Client Daemon,
+ Most usually used in Chinese universities.
+
+Package: openssl-util
+Version: 1.1.1m-1
+Depends: libc, libopenssl1.1, libopenssl-conf
+Source: feeds/base/package/libs/openssl
+SourceName: openssl-util
+License: OpenSSL
+LicenseFiles: LICENSE
+Section: utils
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:openssl:openssl
+Maintainer: Eneas U de Queiroz <cotequeiroz@gmail.com>
+Architecture: x86_64
+Installed-Size: 269092
+Filename: openssl-util_1.1.1m-1_x86_64.ipk
+Size: 268292
+SHA256sum: bbff889c0ded65bcc52f6d9762f00acd795c2f4a61229f53b0f29208911a8a77
+Description:  The OpenSSL Project is a collaborative effort to develop a robust,
+ commercial-grade, full-featured, and Open Source toolkit implementing the
+ Transport Layer Security (TLS) protocol as well as a full-strength
+ general-purpose cryptography library.
+ This package contains the OpenSSL command-line utility.
+
+Package: rpcapd
+Version: 1.9.1-3.1
+Depends: libc, libpcap1
+Source: feeds/base/package/libs/libpcap
+SourceName: rpcapd
+License: BSD-3-Clause
+LicenseFiles: LICENSE
+Section: net
+SourceDateEpoch: 1645120830
+Maintainer: Felix Fietkau <nbd@nbd.name>
+Architecture: x86_64
+Installed-Size: 120757
+Filename: rpcapd_1.9.1-3.1_x86_64.ipk
+Size: 121558
+SHA256sum: e0155d7b7b86047d6c27d5f8b018378a45019fa483a4ff849b3436b89a3b4d0e
+Description:  Capture daemon to be controlled by a remote libpcap application
+
+Package: uclibcxx
+Version: 0.2.5-3
+Depends: libc
+Source: feeds/base/package/libs/uclibc++
+SourceName: uclibcxx
+License: LGPL-2.1-or-later
+Section: libs
+SourceDateEpoch: 1645120830
+Architecture: x86_64
+Installed-Size: 66820
+Filename: uclibcxx_0.2.5-3_x86_64.ipk
+Size: 67477
+SHA256sum: af695286d724aa8260277f6cbda50993cbd4da32ec6e4afad1ec15f9e139fcc5
+Description:  C++ library for embedded systems
+
+Package: zlib-dev
+Version: 1.2.11-3
+Depends: libc, zlib
+Source: feeds/base/package/libs/zlib
+SourceName: zlib-dev
+License: Zlib
+LicenseFiles: README
+Section: devel
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:gnu:zlib
+Architecture: x86_64
+Installed-Size: 77498
+Filename: zlib-dev_1.2.11-3_x86_64.ipk
+Size: 78295
+SHA256sum: 012fe5bf8f625a0c9a31142606c920bcf5494fd88e6a8c960776351211270e63
+Description:  zlib is a lossless data-compression library.
+ This package includes the development support files.
+
+Package: zlib
+Version: 1.2.11-3
+Depends: libc
+Source: feeds/base/package/libs/zlib
+SourceName: zlib
+License: Zlib
+LicenseFiles: README
+Section: libs
+SourceDateEpoch: 1645120830
+CPE-ID: cpe:/a:gnu:zlib
+Architecture: x86_64
+Installed-Size: 41466
+Filename: zlib_1.2.11-3_x86_64.ipk
+Size: 42258
+SHA256sum: 8635bd3f12d93fc3e430c015915ce3801373f1b16991ca5cc8ec7008867a7cb9
+Description:  zlib is a lossless data-compression library.
+ This package includes the shared library.
+
